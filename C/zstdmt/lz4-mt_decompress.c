@@ -469,8 +469,10 @@ static size_t st_decompress(void *arg)
 				}
 			}
 
-			if (nextToLoad == 0)
+			if (out->size == 0 && remaining == 0) {
+				nextToLoad = ctx->inputsize;
 				break;
+			}
 
 			pos += remaining;
 		}
